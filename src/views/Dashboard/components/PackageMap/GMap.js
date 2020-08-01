@@ -74,7 +74,7 @@ export class GMap extends Component {
     console.log('GMap info -->', info);
   //  console.log('tracking info GMap-->', info);
     let locationString = [];
-    if (info['current location'] != undefined) {
+    if (info && info['current location'] != undefined) {
       locationString = info['current location'].split(',');
     }
 
@@ -85,7 +85,7 @@ export class GMap extends Component {
     console.log('location -->', location);
 
     let desLocationString = [];
-    if (info['destination'] != undefined) {
+    if (info && info['destination'] != undefined) {
       desLocationString = info['destination'].split(',');
     }
     // const locationString = info['current location'].split(',');

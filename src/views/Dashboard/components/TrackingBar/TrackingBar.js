@@ -124,7 +124,7 @@ export default function CustomizedSteppers(props) {
   const steps = getSteps();
 
   const { info } = props;
-  const status = info.status;
+  const status = info && info.status ? info.status : '';
 
   const activeStep = steps.findIndex((step) => step === status);
 

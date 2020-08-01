@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Switch, Redirect } from 'react-router-dom';
 
 import { RouteWithLayout } from './components';
-import { Main as MainLayout, Minimal as MinimalLayout } from './layouts';
+import { Main as MainLayout, Minimal as MinimalLayout, Front as FrontLayout } from './layouts';
 
 import {
   Tracking as TrackingView,
@@ -33,11 +33,11 @@ const Routes = () => {
 
   return (
     <Switch>
-      <Redirect
+      {/*  <Redirect
         exact
         from="/"
         to="/sign-in"
-      />
+      /> */}
       <RouteWithLayout
         component={DashboardView}
         exact
@@ -47,8 +47,8 @@ const Routes = () => {
       <RouteWithLayout
         component={FrontView}
         exact
-        layout={MinimalLayout}
-        path="/front"
+        layout={FrontLayout}
+        path="/"
       />
       <RouteWithLayout
         component={TrackingView}

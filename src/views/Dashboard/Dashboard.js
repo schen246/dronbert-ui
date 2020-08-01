@@ -23,6 +23,7 @@ import {
   TrackingBar,
   OrderDetail,
 } from './components';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -48,19 +49,35 @@ const Dashboard = () => {
   const [showDetail, setShowDetail] = useState(false);
   const [activeOrderList, setActiveOrderList] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(0);
-  const [trackingInfo, setTrackingInfo] = useState({});
+  const [trackingInfo, setTrackingInfo] = useState(undefined);
   const [orderDetail, setOrderDetail] = useState({});
   const [currentTime, setCurrentTime] = useState(new Date());
-  
+
+  const orderNumber = activeOrderList.length !== 0 && selectedOrder !== undefined ? activeOrderList[selectedOrder]['Tracking ID'] : undefined;
+  const recipient = activeOrderList.length !== 0 && selectedOrder !== undefined ? activeOrderList[selectedOrder]['Recipient'] : undefined;
+  const status = trackingInfo ? trackingInfo.status : undefined;
+
+  const createdTimeMin = trackingInfo && trackingInfo['created time'] ?
+    Date.parse(trackingInfo['created time'].replace(' ', 'T'))/1000/60 : NaN;
+
+  const deliveryTimeMin = trackingInfo && trackingInfo['estimated delivered time'] ?
+    Date.parse(trackingInfo['estimated delivered time'].replace(' ','T'))/1000/60 : NaN;
+
+  const totalTimeMin = deliveryTimeMin - createdTimeMin;
+
+  const currentTimeMin = Date.parse(currentTime)/1000/60 + currentTime.getTimezoneOffset();
+
+  const timeLeftMin = deliveryTimeMin - currentTimeMin;
+
   console.log('dash selectedOrder->',selectedOrder);
   console.log('dash trackingInfo->', trackingInfo);
 
   const getTrackingTitle = () => {
-    if (!trackingInfo) {
-      return 'Loading ...';
-    }
     if (activeOrderList.length === 0) {
       return "You don't have any active orders.";
+    }
+    if (trackingInfo === undefined) {
+      return 'Loading ...';
     }
     return `Your package #${orderNumber} to ${recipient} is ${status}`;
   }
@@ -183,24 +200,9 @@ const Dashboard = () => {
     return <OrderDetail orderDetail={orderDetail}/>;
   }
 
- // console.log('activeOrderList -->', activeOrderList);
-
-  const orderNumber = activeOrderList.length !== 0 && selectedOrder !== undefined ? activeOrderList[selectedOrder]['Tracking ID'] : undefined;
-  const recipient = activeOrderList.length !== 0 && selectedOrder !== undefined ? activeOrderList[selectedOrder]['Recipient'] : undefined;
-  const status = trackingInfo ? trackingInfo.status : undefined;
-
-  const createdTimeMS = Date.parse(trackingInfo['created time']);
-  const deliveryTimeMS = Date.parse(trackingInfo['estimated delivered time']);
-  const currentTimeMS = Date.parse(currentTime);
-  const totalTime = (deliveryTimeMS - createdTimeMS)/1000/60;
-  const timeLeftMS = deliveryTimeMS - currentTimeMS;
-  const timeLeft = {
-    hours: Math.floor(timeLeftMS / (1000 * 60 * 60) % 24),
-    minutes: Math.floor(timeLeftMS / (1000 * 60) % 60),
-  }
-
   console.log('activeOrderList -->', activeOrderList);
   console.log('activeOrderList length -->', activeOrderList.length);
+
 
   return (
     <Grid
@@ -272,8 +274,8 @@ const Dashboard = () => {
             <Divider />
             <CardContent className={classes.cardContent}>
               <TimeStamp
-              totalTime={totalTime}
-              time={timeLeft}/>
+              total={totalTimeMin}
+              left={timeLeftMin}/>
               <ActiveOrderList 
                 style={{height:285, overflow: 'auto'}}
                 list={activeOrderList}
@@ -282,13 +284,17 @@ const Dashboard = () => {
               />
             </CardContent>
             <CardActions>
+
               <Button
                 color="primary"
                 size="small"
                 variant="text"
               >
+                <Link to='/history'>
                 View all history {/*<ArrowRightIcon />*/}
+                </Link>
               </Button>
+
             </CardActions>
           </Card>
         </Box>

@@ -95,21 +95,10 @@ const Topbar = props => {
               <NotificationsIcon />
             </Badge>
           </IconButton> */}
-          <span className={classes.logoText}>Sign out</span>
-          <RouterLink to='/sign-in'><IconButton
-            className={classes.signOutButton}
-            color="inherit"
-          >
-            <InputIcon />
-          </IconButton></RouterLink>
-        </Hidden>
-        <Hidden lgUp>
-          <IconButton
-            color="inherit"
-            onClick={onSidebarOpen}
-          >
-            <MenuIcon />
-          </IconButton>
+
+          <RouterLink to='/sign-in'>
+            <span className={classes.logoText}>Sign in</span>
+         </RouterLink>
         </Hidden>
       </Toolbar>
     </AppBar>
