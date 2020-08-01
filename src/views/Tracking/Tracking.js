@@ -76,7 +76,7 @@ const Tracking = (props) => {
       }
       return trackingInfo['estimated delivered time'] ?
         `The estimated delivery time is ${trackingInfo['estimated delivered time']}.` :
-        'The estimate estimated delivery time is available shortly after the package is dispatched.'
+        'The estimated delivery time is available shortly after the package is dispatched.'
     }
     return `Package #${orderNumber} is ${status}. ${timeString()} It is ${delay ? 'delayed' : 'on time'}`;
   }

@@ -15,8 +15,15 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const UserList = () => {
+const UserList = (props) => {
   const classes = useStyles();
+
+  const { history } = props;
+  const user_id = localStorage.getItem('userID');
+  if (!user_id) {
+    history.push('./sign-in');
+  }
+
   const [users] = useState(mockData);
   const [orderDetail, setOrderDetail] = useState([]);
 

@@ -11,8 +11,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Account = () => {
+const Account = (props) => {
   const classes = useStyles();
+
+  const { history } = props;
+  const user_id = localStorage.getItem('userID');
+  if (!user_id) {
+    history.push('./sign-in');
+  }
 
   const [profile, setProfile] = useState({
     user_id: localStorage.getItem('userID'),

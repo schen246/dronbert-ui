@@ -38,10 +38,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   const classes = useStyles();
-
+  const { history } = props;
   const user_id = localStorage.getItem('userID');
+  if (!user_id) {
+    history.push('./sign-in');
+  }
   const selected = localStorage.getItem('selected');
 
   const [loadingDetail, setLoadingDetail] = useState(false);

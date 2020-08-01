@@ -9,10 +9,11 @@ import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: '2px 4px',
+    padding: '3px 4px',
     display: 'flex',
     alignItems: 'center',
-    width: 400,
+    width: '30vw',
+    borderRadius: '2vw',
   },
   input: {
     marginLeft: theme.spacing(1),
@@ -20,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
   },
   iconButton: {
     padding: 10,
+    backgroundColor: 'primary',
+    color:'primary',
   },
   divider: {
     height: 28,
@@ -49,13 +52,13 @@ const TrackingBar = (props) => {
         name='search input'
         className={classes.input}
         onChange={handleChange}
-        placeholder="Search Your Package with Order Number"
+        placeholder=" Search Your Package with Order Number"
       />
       <IconButton
         onClick={handleSubmit}
         className={classes.iconButton}
       >
-        <SearchIcon />
+        <SearchIcon color='primary'/>
       </IconButton>
     </Paper>
   );

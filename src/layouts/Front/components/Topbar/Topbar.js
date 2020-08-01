@@ -29,6 +29,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: 'large',
     paddingLeft: '20px',
   },
+
   extendedIcon: {
     marginRight: theme.spacing(1),
   },

@@ -29,6 +29,7 @@ const useStyles = makeStyles(theme => ({
     color: '#F0FFFF',
     fontFamily: 'Aclonica',
     fontSize: 'large',
+    paddingRight: '1vw',
   },
   inputIcon: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -71,6 +72,10 @@ const Topbar = props => {
 
   const classes = useStyles();
 
+  const handleSignOut = () => {
+    localStorage.clear();
+  }
+
   return (
     <AppBar
       {...rest}
@@ -92,11 +97,13 @@ const Topbar = props => {
               <NotificationsIcon />
             </Badge>
           </IconButton> */}
-          <span className={classes.logoText}>Sign out</span>
+
           <RouterLink to='/sign-in'><IconButton
             className={classes.signOutButton}
             color="inherit"
+            onClick={handleSignOut}
           >
+            <span className={classes.logoText}>Sign out </span>
             <InputIcon />
           </IconButton></RouterLink>
 
