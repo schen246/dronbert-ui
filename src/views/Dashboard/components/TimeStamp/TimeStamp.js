@@ -31,11 +31,12 @@ const useStyles = makeStyles(theme => ({
   },
   time: {
     margin: 'auto',
-    fontSize: 'xx-large',
+    fontSize: 'large',
   }
 }));
 
 function CircularProgressWithLabel(props) {
+  console.log(props.left);
   return (
     <Box
       display="inline-flex"
@@ -62,17 +63,29 @@ function CircularProgressWithLabel(props) {
           color="textSecondary"
           variant="h4"
         >{
-            `${Math.floor(props.timeleft/60)} hrs
-          ${props.timeleft%60} mins`}</Typography>
+            `${Math.floor(props.left/60)} hrs
+          ${Math.floor(props.left) % 60} mins`}</Typography>
       </Box>
     </Box>
   );
 }
 
+
+
+
 const TimeStamp = props => {
-  const { time, className, ...rest } = props;
+  const { total, left, className, ...rest } = props;
   const classes = useStyles();
 
+  const getTimerMessage = () => {
+    if (isNaN(total) || isNaN(left)) {
+      return <div className={classes.time}> Delivery time will be available shortly after the package get dispatched</div>;
+    }
+    if (left <= 0) {
+      return <div className={classes.time}>Delivered</div>
+    }
+    return <CircularProgressWithLabel value={100 - left/total*100} left={left}/>
+  }
   /* React.useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((preTimeLeft) => (preTimeLeft - 10 <= 0 ? 0 : preTimeLeft - 10));
@@ -91,11 +104,8 @@ const TimeStamp = props => {
       justify="center"
       spacing={0}
     >
-      {/* <CircularProgressWithLabel value={100 - timeLeft/totalTime*100} timeleft={timeLeft}/>; */}
       {
-        isNaN(time.hours) || isNaN(time.minutes) ?
-          <div className={classes.time}> Delivery time will be available shortly after the package get in transit </div> :
-          <div className={classes.time}>{time.hours} hrs {time.minutes} minutes</div>
+        getTimerMessage()
       }
     </Grid>
   );

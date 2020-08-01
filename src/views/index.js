@@ -9,3 +9,5 @@ export { default as SignUp } from './SignUp';
 export { default as Typography } from './Typography';
 export { default as UserList } from './UserList';
 export { default as NewOrder } from './NewOrder';
+export { default as Tracking} from './Tracking';
+export { default as Front } from './Front';

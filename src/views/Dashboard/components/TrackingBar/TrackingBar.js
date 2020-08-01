@@ -11,6 +11,7 @@ import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
 import RoomIcon from '@material-ui/icons/Room';
 import StepConnector from '@material-ui/core/StepConnector';
+import capitalize from '../../../../common/capitalize';
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -123,7 +124,7 @@ export default function CustomizedSteppers(props) {
   const steps = getSteps();
 
   const { info } = props;
-  const status = info.status;
+  const status = info && info.status ? info.status : '';
 
   const activeStep = steps.findIndex((step) => step === status);
 
@@ -133,7 +134,7 @@ export default function CustomizedSteppers(props) {
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel
-              StepIconComponent={ColorlibStepIcon}><span className={classes.label}>{label}</span></StepLabel>
+              StepIconComponent={ColorlibStepIcon}><span className={classes.label}>{capitalize(label)}</span></StepLabel>
           </Step>
         ))}
       </Stepper>
