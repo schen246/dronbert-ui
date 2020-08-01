@@ -35,7 +35,8 @@ const useStyles = makeStyles(theme => ({
   name: {
     display: 'flex',
     alignContent: 'space-around',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    margin: 'auto',
   }
 }));
 
@@ -85,13 +86,13 @@ const AccountProfile = props => {
       <CardContent>
         <div className={classes.details}>
           <div className={classes.firstRow} style={{height: '80%'}}>
-            <div className={classes.name} style={{width: '50%'}}>
+            <div className={classes.name} style={{width: '30%'}}>
               <ThemeProvider theme={theme}>
-                <Typography variant='h2' style={{height: '50%'}}> {profile.lastName}, </Typography>
-                <Typography variant='h3' style={{height: '50%'}}> {profile.firstName} </Typography>
+                <Typography variant='h3' style={{height: '50%'}}> {profile.lastName}, </Typography>
+                <Typography variant='h4' style={{height: '50%'}}> {profile.firstName} </Typography>
               </ThemeProvider>
             </div>
-            <div style={{width: '50%', alignItems: 'center'}}>
+            <div style={{width: '30%', alignItems: 'center', margin: 'auto'}}>
               <ThemeProvider theme={theme}>
                 <Avatar></Avatar>
               </ThemeProvider>

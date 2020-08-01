@@ -27,15 +27,15 @@ const useStyles = makeStyles(theme => ({
   stats: {
     marginTop: theme.spacing(2),
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   time: {
     margin: 'auto',
-    fontSize: 'large',
+    fontSize: 'larger',
   },
   deliveryMessage: {
     margin: 'auto',
-    fontSize: 'xxl',
+    fontSize: 'xx-large',
   },
 }));
 
@@ -47,7 +47,7 @@ function CircularProgressWithLabel(props) {
       position="relative"
     >
       <CircularProgress
-        size={150}
+        size={200}
         thickness={2}
         variant="static"
         color='secondary'
