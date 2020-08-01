@@ -111,13 +111,13 @@ const Tracking = (props) => {
         >
           <Grid
             item
-            xl={12}
+            md={12}
           >
             <TrackingBar info={trackingInfo}/>
           </Grid>
           <Grid
             item
-            xl={12}
+            md={12}
           >
             <PackageMap info={trackingInfo}/>
           </Grid>

@@ -19,33 +19,35 @@ export class GMap extends Component {
   
   displayMarkers = (locations) => {
     // const { robot } = this.state;
-    if ((this.props.info['machine type'] === 'robot')) {
-      return locations.map((store, index) => {
+    if (this.props.info != undefined) {
+      if ((this.props.info['machine type'] === 'robot')) {
+        return locations.map((store, index) => {
+          return <Tooltip title="Your Package is getting closer! " placement="right">
+            <Marker key={index} id={index} position={{
+            lat: store.lat,
+            lng: store.lng
+          }}
+          icon={{
+            url: RedRob,
+            scaledSize: new window.google.maps.Size(35,35),
+          }}
+          onClick={() => console.log("You clicked me!")} />
+          </Tooltip>
+        })
+      } else {return locations.map((store, index) => {
         return <Tooltip title="Your Package is getting closer! " placement="right">
           <Marker key={index} id={index} position={{
           lat: store.lat,
           lng: store.lng
         }}
         icon={{
-          url: RedRob,
-          scaledSize: new window.google.maps.Size(35,35),
+          url: drone,
+          scaledSize: new window.google.maps.Size(30,30),
         }}
-        onClick={() => console.log("You clicked me!")} />
-        </Tooltip>
-      })
-    } else {return locations.map((store, index) => {
-      return <Tooltip title="Your Package is getting closer! " placement="right">
-        <Marker key={index} id={index} position={{
-        lat: store.lat,
-        lng: store.lng
-      }}
-      icon={{
-        url: drone,
-        scaledSize: new window.google.maps.Size(30,30),
-      }}
-     onClick={() => console.log("You clicked me!")} />
-     </Tooltip>
-    })}
+      onClick={() => console.log("You clicked me!")} />
+      </Tooltip>
+      })}
+    }
     
   }
   //customized map style 
@@ -67,7 +69,7 @@ export class GMap extends Component {
   // };
 
   render() {
-    console.log('info[machine type] -->', this.props.info['machine type']);
+    // console.log('info[machine type] -->', this.props.info['machine type']);
     
     const mapStyles = {
       width: '100%',

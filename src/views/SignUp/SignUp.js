@@ -238,7 +238,8 @@ const SignUp = props => {
         <Grid
           className={classes.quoteContainer}
           item
-          lg={5}
+          // lg={5}
+          md={6}
         >
           <div className={classes.quote}>
             <div className={classes.quoteInner}>
@@ -269,7 +270,8 @@ const SignUp = props => {
         <Grid
           className={classes.content}
           item
-          lg={7}
+          // lg={7}
+          md={6}
           xs={12}
         >
           <div className={classes.content}>
