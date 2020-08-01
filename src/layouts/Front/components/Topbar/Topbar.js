@@ -27,6 +27,7 @@ const useStyles = makeStyles(theme => ({
     color: '#F0FFFF',
     fontFamily: 'Aclonica',
     fontSize: 'large',
+    paddingLeft: '20px',
   },
   extendedIcon: {
     marginRight: theme.spacing(1),
@@ -97,8 +98,11 @@ const Topbar = props => {
           </IconButton> */}
 
           <RouterLink to='/sign-in'>
-            <span className={classes.logoText}>Sign in</span>
+            <span className={classes.logoText} >Sign in </span>
          </RouterLink>
+          <RouterLink to='/sign-up'>
+            <span className={classes.logoText}>Sign up</span>
+          </RouterLink>
         </Hidden>
       </Toolbar>
     </AppBar>

@@ -205,7 +205,7 @@ const SignUp = props => {
 
   const handleSignUp = event => {
     event.preventDefault();
-    history.push('/');
+    history.push('/sign-in');
     console.log(formState.values);
     axios.post('http://3.15.25.220:5000/register', {
       "user_id": formState.values.username,
@@ -304,7 +304,7 @@ const SignUp = props => {
                   helperText={
                     hasError('username') ? formState.errors.username[0] : null
                   }
-                  label="Username"
+                  label="User id"
                   name="username"
                   onChange={handleChange}
                   type="text"
