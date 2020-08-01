@@ -56,7 +56,7 @@ const BootstrapButton = withStyles({
     },
     '&:focus': {
       boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
-      backgroundColor: '#0069d9',
+      backgroundColor: '#FF4500',
     },
   },
 })(Button);

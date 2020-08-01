@@ -17,9 +17,9 @@ const useStyles = makeStyles(theme => ({
   },
   signOutButton: {
     marginLeft: theme.spacing(1),
-    color: '#F0FFFF',
+    color: 'white',
     size: 'large',
-    variant: 'contained'
+    variant: 'contained',
   },
   logo : {
     width: '10%',
@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
   },
   sideBarController: {
     color: '#F0FFFF',
-    fontSize: 'large'
+    fontSize: 'large',
   }
 }));
 

@@ -19,6 +19,7 @@ export class GMap extends Component {
   
   displayMarkers = (locations) => {
     // const { robot } = this.state;
+
     if (this.props.info != undefined) {
       if ((this.props.info['machine type'] === 'robot')) {
         return locations.map((store, index) => {
@@ -69,7 +70,9 @@ export class GMap extends Component {
   // };
 
   render() {
+
     // console.log('info[machine type] -->', this.props.info['machine type']);
+
     
     const mapStyles = {
       width: '100%',

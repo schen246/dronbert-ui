@@ -53,7 +53,7 @@ const Routes = () => {
       <RouteWithLayout
         component={TrackingView}
         exact
-        layout={MinimalLayout}
+        layout={FrontLayout}
         path="/tracking/:id"
       />
       <RouteWithLayout
