@@ -67,7 +67,9 @@ const UserList = () => {
     })
       .then(response => {
         console.log('order history data -->', response.data);
-        setOrderHistory(response.data);
+        setOrderHistory(response.data.sort(
+          (a, b) => Date.parse(b['Order Date']) - Date.parse(a['Order Date'])
+        ));
         return response.data[0];
       })
       .then(data => {

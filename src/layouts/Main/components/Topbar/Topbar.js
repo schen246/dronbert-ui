@@ -18,6 +18,8 @@ const useStyles = makeStyles(theme => ({
   signOutButton: {
     marginLeft: theme.spacing(1),
     color: 'white',
+    size: 'large',
+    variant: 'contained',
   },
   logo : {
     width: '10%',

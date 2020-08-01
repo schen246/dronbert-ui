@@ -284,17 +284,17 @@ const Dashboard = () => {
               />
             </CardContent>
             <CardActions>
-
+              <Link to='/history'>
               <Button
                 color="primary"
                 size="small"
                 variant="text"
               >
-                <Link to='/history'>
-                View all history {/*<ArrowRightIcon />*/}
-                </Link>
-              </Button>
 
+                View all history {/*<ArrowRightIcon />*/}
+
+              </Button>
+              </Link>
             </CardActions>
           </Card>
         </Box>

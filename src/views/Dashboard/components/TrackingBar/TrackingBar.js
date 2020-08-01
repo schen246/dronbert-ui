@@ -5,11 +5,11 @@ import clsx from 'clsx';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import SettingsIcon from '@material-ui/icons/Settings';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
 import RoomIcon from '@material-ui/icons/Room';
+import DepartureBoardIcon from '@material-ui/icons/DepartureBoard';
 import StepConnector from '@material-ui/core/StepConnector';
 import capitalize from '../../../../common/capitalize';
 
@@ -66,9 +66,9 @@ function ColorlibStepIcon(props) {
 
   const icons = {
     1: <PlaylistAddCheckIcon />,
-    2: <RoomIcon />,
+    2: <DepartureBoardIcon  />,
     3: <FlightTakeoffIcon />,
-    4: <SentimentVerySatisfiedIcon />,
+    4: <RoomIcon />,
   };
 
   return (

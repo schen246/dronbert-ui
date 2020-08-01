@@ -32,7 +32,11 @@ const useStyles = makeStyles(theme => ({
   time: {
     margin: 'auto',
     fontSize: 'large',
-  }
+  },
+  deliveryMessage: {
+    margin: 'auto',
+    fontSize: 'xxl',
+  },
 }));
 
 function CircularProgressWithLabel(props) {
@@ -46,6 +50,7 @@ function CircularProgressWithLabel(props) {
         size={150}
         thickness={2}
         variant="static"
+        color='secondary'
         {...props}
       />
       <Box
@@ -82,9 +87,9 @@ const TimeStamp = props => {
       return <div className={classes.time}> Delivery time will be available shortly after the package get dispatched</div>;
     }
     if (left <= 0) {
-      return <div className={classes.time}>Delivered</div>
+      return <div className={classes.deliveryMessage}>Delivered</div>
     }
-    return <CircularProgressWithLabel value={100 - left/total*100} left={left}/>
+    return <CircularProgressWithLabel value={100 - Math.floor(left/total*100)} left={left}/>
   }
   /* React.useEffect(() => {
     const timer = setInterval(() => {

@@ -19,7 +19,7 @@ export class GMap extends Component {
   
   displayMarkers = (locations) => {
     // const { robot } = this.state;
-    if ((this.props.info['machine type'] === 'robot')) {
+    if ((this.props.info && this.props.info['machine type'] === 'robot')) {
       return locations.map((store, index) => {
         return <Tooltip title="Your Package is getting closer! " placement="right">
           <Marker key={index} id={index} position={{
@@ -67,7 +67,7 @@ export class GMap extends Component {
   // };
 
   render() {
-    console.log('info[machine type] -->', this.props.info['machine type']);
+ //   console.log('info[machine type] -->', this.props.info['machine type']);
     
     const mapStyles = {
       width: '100%',
