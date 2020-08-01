@@ -38,7 +38,7 @@ const Topbar = props => {
             src="/images/logos/robot-dribbble.jpg"
             className={classes.logo}
           />
-          <span className={classes.logoText}> Dronbert </span>
+          <span className={classes.logoText}> Dronbot </span>
         </RouterLink>
       </Toolbar>
     </AppBar>
