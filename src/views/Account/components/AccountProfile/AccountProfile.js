@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/styles';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import {
   Card,
 //  CardActions,
   CardContent,
-//  Avatar,
+  Avatar,
   Typography,
   Divider,
 //  Button,
@@ -17,24 +18,59 @@ import {
 const useStyles = makeStyles(theme => ({
   root: {},
   details: {
-    display: 'flex'
-  },
-  avatar: {
-    marginLeft: 'auto',
-    height: 110,
-    width: 100,
-    flexShrink: 0,
-    flexGrow: 0
+    display: 'flex',
+    alignContent: 'space-around',
+    flexDirection: 'column'
   },
   progress: {
     marginTop: theme.spacing(2)
   },
   uploadButton: {
     marginRight: theme.spacing(2)
+  },
+  firstRow: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  name: {
+    display: 'flex',
+    alignContent: 'space-around',
+    flexDirection: 'column'
   }
 }));
 
+const theme = createMuiTheme({
+  overrides: {
+    // Style sheet name ⚛️
+    MuiAvatar: {
+      circle: {
+        color: '#F0FFFF',
+        background: '#7ccccc'
+      },
+      root: {
+        width: "150px",
+        height: "150px"
+      }
+    },
+    // MuiTypography: {
+    //   h1: {
+    //     fontSize: '70px',
+    //     position: 'relative',
+    //     top: '30px',
+    //     left: '80px'
+    //   },
+    //   h2: {
+    //     fontSize: '60px',
+    //     position: 'relative',
+    //     top: '100px',
+    //     left: '80px'
+    //   }
+    // }
+  },
+});
+
 const AccountProfile = props => {
+  
   const { className, ...rest } = props;
 
   const classes = useStyles();
@@ -48,14 +84,21 @@ const AccountProfile = props => {
     >
       <CardContent>
         <div className={classes.details}>
-          <div>
-            <Typography
-              gutterBottom
-              variant="h1"
-            >
-              {profile.firstName} {profile.lastName}
-            </Typography>
-            <br/>
+          <div className={classes.firstRow} style={{height: '80%'}}>
+            <div className={classes.name} style={{width: '50%'}}>
+              <ThemeProvider theme={theme}>
+                <Typography variant='h2' style={{height: '50%'}}> {profile.lastName}, </Typography>
+                <Typography variant='h3' style={{height: '50%'}}> {profile.firstName} </Typography>
+              </ThemeProvider>
+            </div>
+            <div style={{width: '50%', alignItems: 'center'}}>
+              <ThemeProvider theme={theme}>
+                <Avatar></Avatar>
+              </ThemeProvider>
+            </div>
+          </div>
+          <br/>
+          <div className={classes.secondRow} style={{height: '20%'}}>
             <Typography
               className={classes.locationText}
               color="textSecondary"
