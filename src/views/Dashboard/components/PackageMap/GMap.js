@@ -12,15 +12,14 @@ export class GMap extends Component {
   constructor(props) {
     super(props);
   }
-
   state = {
     open: false,
-    robot: true,
+    // robot: true,
   };
-
+  
   displayMarkers = (locations) => {
-    const { robot } = this.state;
-    if (robot) {
+    // const { robot } = this.state;
+    if ((this.props.info['machine type'] === 'robot')) {
       return locations.map((store, index) => {
         return <Tooltip title="Your Package is getting closer! " placement="right">
           <Marker key={index} id={index} position={{
@@ -42,7 +41,7 @@ export class GMap extends Component {
       }}
       icon={{
         url: drone,
-        scaledSize: new window.google.maps.Size(35,35),
+        scaledSize: new window.google.maps.Size(30,30),
       }}
      onClick={() => console.log("You clicked me!")} />
      </Tooltip>
@@ -63,14 +62,19 @@ export class GMap extends Component {
     this.setState({ open: true });
   };
 
-
+  // machingType = () => {
+  //   this.setState({ robot:((this.props.info['machine type'] === 'robot') ? true : false )});
+  // };
 
   render() {
+    console.log('info[machine type] -->', this.props.info['machine type']);
+    
     const mapStyles = {
       width: '100%',
       height: '100%'
     }
     const { info } = this.props;
+    // console.log('info[machine type] -->', info['machine type']);
     console.log('GMap info -->', info);
   //  console.log('tracking info GMap-->', info);
     let locationString = [];
@@ -94,6 +98,7 @@ export class GMap extends Component {
       desLng: parseFloat(desLocationString[1]),
     };
     console.log('desLocation -->', desLocation);
+    // console.log('robot -->', this.robot);
 
     return (
       <div>
