@@ -7,7 +7,7 @@ import GMap from './GMap'
 
 const useStyles = makeStyles(() => ({
   root: {
-    height: 393,
+    height: 388,
     position: 'relative',
     margin: 'auto',
     paddingTop: 0,

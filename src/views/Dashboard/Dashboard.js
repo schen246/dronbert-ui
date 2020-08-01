@@ -123,7 +123,7 @@ const Dashboard = () => {
     //   setCurrentTime(new Date());
     // }, 2 * 1000);
     setCurrentTime(new Date());
-    }, 60 * 1000);
+    }, 30 * 1000);
     return () => clearInterval(timer);
   }, [])
 
