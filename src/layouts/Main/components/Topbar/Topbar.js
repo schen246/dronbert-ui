@@ -20,7 +20,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   signOutButton: {
-    marginLeft: theme.spacing(1)
+    marginLeft: theme.spacing(1),
+    color: 'white',
   },
   logo : {
     width: '10%',
@@ -29,6 +30,7 @@ const useStyles = makeStyles(theme => ({
   logoText : {
     color: '#F0FFFF',
     fontFamily: 'Aclonica',
+    fontSize: 'large',
   },
   extendedIcon: {
     marginRight: theme.spacing(1),
@@ -84,11 +86,6 @@ const Topbar = props => {
     >
       <Toolbar>
         <RouterLink to="/">
-          <img
-            alt="Logo"
-            src="/images/logos/robot-dribbble.jpg"
-            className={classes.logo}
-          />
           <span className={classes.logoText}> Dronbot </span>
         </RouterLink>
         <div className={classes.flexGrow} />
@@ -102,6 +99,7 @@ const Topbar = props => {
               <NotificationsIcon />
             </Badge>
           </IconButton> */}
+          <span>Sign out</span>
           <RouterLink to='/sign-in'><IconButton
             className={classes.signOutButton}
             color="inherit"

@@ -16,6 +16,7 @@ const useStyles = makeStyles(() => ({
   logoText : {
     color: '#F0FFFF',
     fontFamily: 'Aclonica',
+    fontSize: 'large'
   },
 }));
 
@@ -33,11 +34,6 @@ const Topbar = props => {
     >
       <Toolbar>
         <RouterLink to="/">
-          <img
-            alt="Logo"
-            src="/images/logos/robot-dribbble.jpg"
-            className={classes.logo}
-          />
           <span className={classes.logoText}> Dronbert </span>
         </RouterLink>
       </Toolbar>
